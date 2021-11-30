@@ -1,0 +1,104 @@
+
+bigman para animar.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antebrazo1
+  rotate: false
+  xy: 2, 642
+  size: 291, 153
+  orig: 291, 153
+  offset: 0, 0
+  index: -1
+antebrazo2
+  rotate: false
+  xy: 309, 381
+  size: 270, 224
+  orig: 270, 224
+  offset: 0, 0
+  index: -1
+brazo1
+  rotate: true
+  xy: 2, 188
+  size: 244, 268
+  orig: 244, 268
+  offset: 0, 0
+  index: -1
+brazo2
+  rotate: true
+  xy: 2, 434
+  size: 206, 305
+  orig: 206, 305
+  offset: 0, 0
+  index: -1
+cabeza
+  rotate: true
+  xy: 581, 341
+  size: 230, 231
+  orig: 230, 231
+  offset: 0, 0
+  index: -1
+mano1
+  rotate: true
+  xy: 480, 783
+  size: 137, 157
+  orig: 137, 157
+  offset: 0, 0
+  index: -1
+mano2
+  rotate: false
+  xy: 295, 642
+  size: 158, 153
+  orig: 158, 153
+  offset: 0, 0
+  index: -1
+muslo1
+  rotate: true
+  xy: 639, 782
+  size: 138, 260
+  orig: 138, 260
+  offset: 0, 0
+  index: -1
+muslo2
+  rotate: true
+  xy: 777, 573
+  size: 207, 238
+  orig: 207, 238
+  offset: 0, 0
+  index: -1
+pierna1
+  rotate: true
+  xy: 272, 126
+  size: 253, 254
+  orig: 253, 254
+  offset: 0, 0
+  index: -1
+pierna2
+  rotate: true
+  xy: 455, 607
+  size: 173, 320
+  orig: 173, 320
+  offset: 0, 0
+  index: -1
+torso
+  rotate: true
+  xy: 528, 2
+  size: 337, 479
+  orig: 337, 479
+  offset: 0, 0
+  index: -1
+zapato1
+  rotate: false
+  xy: 2, 797
+  size: 237, 123
+  orig: 237, 123
+  offset: 0, 0
+  index: -1
+zapato2
+  rotate: false
+  xy: 241, 797
+  size: 237, 123
+  orig: 237, 123
+  offset: 0, 0
+  index: -1

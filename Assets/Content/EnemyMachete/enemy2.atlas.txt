@@ -1,0 +1,146 @@
+
+enemy2.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antebrazo
+  rotate: true
+  xy: 414, 354
+  size: 50, 55
+  orig: 52, 57
+  offset: 1, 1
+  index: -1
+bota_adelante
+  rotate: false
+  xy: 112, 367
+  size: 46, 36
+  orig: 46, 36
+  offset: 0, 0
+  index: -1
+bota_atras
+  rotate: false
+  xy: 160, 349
+  size: 45, 35
+  orig: 45, 35
+  offset: 0, 0
+  index: -1
+brazo_adelante
+  rotate: false
+  xy: 298, 373
+  size: 60, 32
+  orig: 62, 34
+  offset: 1, 1
+  index: -1
+brazo_atras
+  rotate: true
+  xy: 254, 386
+  size: 46, 42
+  orig: 48, 44
+  offset: 1, 1
+  index: -1
+cabeza
+  rotate: true
+  xy: 168, 386
+  size: 81, 84
+  orig: 81, 84
+  offset: 0, 0
+  index: -1
+casco
+  rotate: true
+  xy: 414, 406
+  size: 104, 87
+  orig: 104, 87
+  offset: 0, 0
+  index: -1
+efecto_cuchillo
+  rotate: false
+  xy: 2, 405
+  size: 164, 105
+  orig: 168, 108
+  offset: 2, 1
+  index: -1
+hombro_atras
+  rotate: true
+  xy: 2, 369
+  size: 34, 54
+  orig: 36, 56
+  offset: 1, 1
+  index: -1
+machete
+  rotate: true
+  xy: 168, 469
+  size: 41, 129
+  orig: 43, 131
+  offset: 1, 1
+  index: -1
+mano
+  rotate: false
+  xy: 471, 324
+  size: 37, 29
+  orig: 39, 31
+  offset: 1, 1
+  index: -1
+mano_2
+  rotate: false
+  xy: 254, 434
+  size: 43, 33
+  orig: 45, 35
+  offset: 1, 1
+  index: -1
+mano_atras
+  rotate: true
+  xy: 91, 333
+  size: 27, 17
+  orig: 29, 19
+  offset: 1, 1
+  index: -1
+mano_atras_2
+  rotate: false
+  xy: 112, 331
+  size: 36, 34
+  orig: 38, 36
+  offset: 1, 1
+  index: -1
+muslo
+  rotate: true
+  xy: 471, 355
+  size: 49, 39
+  orig: 51, 41
+  offset: 1, 1
+  index: -1
+muslo_atras
+  rotate: false
+  xy: 58, 362
+  size: 52, 41
+  orig: 54, 43
+  offset: 1, 1
+  index: -1
+palma_atras
+  rotate: false
+  xy: 55, 341
+  size: 34, 19
+  orig: 36, 21
+  offset: 1, 1
+  index: -1
+pierna
+  rotate: false
+  xy: 360, 355
+  size: 52, 50
+  orig: 54, 52
+  offset: 1, 1
+  index: -1
+pierna_atras
+  rotate: true
+  xy: 2, 326
+  size: 41, 51
+  orig: 43, 53
+  offset: 1, 1
+  index: -1
+torso
+  rotate: true
+  xy: 299, 407
+  size: 103, 113
+  orig: 105, 115
+  offset: 1, 1
+  index: -1
