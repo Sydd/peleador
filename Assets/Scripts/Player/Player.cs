@@ -5,28 +5,42 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    PlayerMovement movementBehavior;
+    private PlayerMovement _movementBehavior;
+
     [SerializeField]
-    PlayerAttack playerAttack;
-    PlayerStatus currentStatus;
-    int lastLean = -1;
+    private PlayerAttack _attackBehavior;
+
+    private PlayerStatus currentStatus;
+    private int lastLean = -1;
 
     public PlayerStatus CurrentStatus { get => currentStatus; }
 
     private void Start()
     {
         ChangeStatus(PlayerStatus.WALKING);
+        _attackBehavior.OnAttack += ChangeStatusAttack;
     }
 
-    private void ChangeStatus(PlayerStatus a)
+    public void ChangeStatus(PlayerStatus a)
     {
         if (currentStatus == a) return;
-        
+
         currentStatus = a;
     }
 
-}
+    private void ChangeStatusAttack(AttackType attack)
+    {
+        if (attack == AttackType.ATTACK_END)
+        {
+            _movementBehavior.CanMove = true;
+            ChangeStatus(PlayerStatus.WALKING);
+            return;
+        }
 
+        _movementBehavior.CanMove = false;
+        ChangeStatus(PlayerStatus.ATTACKING);
+    }
+}
 
 public enum PlayerStatus
 {

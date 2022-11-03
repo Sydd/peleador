@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,34 +8,59 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField]
     private Vector3 meleePositionOffSet;
+
     [SerializeField]
     private float basicAttackRadius;
+
     [SerializeField]
     private LayerMask whatIsEnemy;
 
     public Action<AttackType> OnAttack;
 
-    private bool attackEnabled = true;
+    private bool attacking = false;
     private int opAttackLeanID;
-    private int attackCounter; 
+    private int attackCounter;
+    private float _elapsedTime;
 
-    public void Attack()
+    private void Update()
     {
-        if (!attackEnabled) return;
-
-        if (attackCounter > 1) ComboAttack();
-
-        else BasicAttack();
-
-        attackCounter++;
-
-        attackEnabled = false;
-
-        LeanTween.delayedCall(Constants.BASIC_ATTACK_COOLDOWN, () => attackEnabled = true);
-
+        _elapsedTime += Time.deltaTime;
     }
 
-    private void BasicAttack()
+    public async void Attack()
+    {
+        if (attacking) return;
+
+        attacking = true;
+
+        _elapsedTime = 0;
+
+        BasicAttack();
+
+        int result = await UniTask.WhenAny(UniTask.Delay(500), UniTask.WaitUntil(() => Input.GetMouseButtonDown(0)));
+
+        if (result == 0)
+        {
+            EndAttack();
+            return;
+        }
+
+        _elapsedTime = 0;
+
+        ComboAttack();
+
+        await UniTask.WaitUntil(() => _elapsedTime > .5f);
+
+        EndAttack();
+    }
+
+    private void EndAttack()
+    {
+        attacking = false;
+        OnAttack?.Invoke(AttackType.ATTACK_END);
+    }
+
+    private async void BasicAttack()
     {
         var enemiesTouched = Physics.OverlapSphere(transform.position + meleePositionOffSet, basicAttackRadius, whatIsEnemy);
 
@@ -43,14 +69,7 @@ public class PlayerAttack : MonoBehaviour
             enemiesTouched[i].GetComponent<Enemy>().Hurt(AttackType.ATTACK_BASIC);
         }
 
-        LeanTween.cancel(opAttackLeanID);
-
-
-        opAttackLeanID = LeanTween.delayedCall(Constants.TIME_TO_CHAINATTACKS, () =>
-        {
-            attackCounter = 0;
-        }).id;
-
+        await UniTask.WaitUntil(() => _elapsedTime > .25f);
 
         OnAttack?.Invoke(AttackType.ATTACK_BASIC);
     }
@@ -64,12 +83,10 @@ public class PlayerAttack : MonoBehaviour
             enemiesTouched[i].GetComponent<Enemy>().Hurt(AttackType.ATTACK_COMBO);
         }
 
-        attackCounter = 0;
-
         OnAttack?.Invoke(AttackType.ATTACK_COMBO);
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
@@ -77,10 +94,10 @@ public class PlayerAttack : MonoBehaviour
     }
 }
 
-
 public enum AttackType
 {
     ATTACK_BASIC,
     ATTACk_ALT,
-    ATTACK_COMBO
+    ATTACK_COMBO,
+    ATTACK_END
 }

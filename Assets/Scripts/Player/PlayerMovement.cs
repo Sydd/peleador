@@ -8,25 +8,33 @@ public class PlayerMovement : MonoBehaviour
     [Header("Unidades por segundo.")]
     [Tooltip("Cuantas unidades se mueve por segundo en X & en Z")]
     public Vector3 speed;
+
     [Header("Cuantos segundos tienen que pasar para que termine corriendo a la velocidad full")]
     public float TimeToAchieveFullSpeed;
+
     [Header("En funcion de _timeMoving / TimeToAchieveFullSpeed TimeToAchieveFullSpeed")]
     public AnimationCurve speedCurve;
+
     public float PercentOfVelocityToRun;
 
-
-    bool facingRight = true;
-    Vector3 vecMovementFactor = Vector3.zero;
+    public bool CanMove { get; set; }
+    private bool facingRight = true;
+    private Vector3 vecMovementFactor = Vector3.zero;
 
     // TODO: Esto hay que mandarlo al player
     // y desde aca solo hay que ejecutar el evento onMoving.
     public Action onPlayerStop;
+
     public Action<bool> onFlip;
 
     public Vector3 Speed;
 
-
     private float _timeMoving;
+
+    private void Start()
+    {
+        CanMove = true;
+    }
 
     private void Update()
     {
@@ -39,21 +47,22 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
+        if (!CanMove) return;
 
         if (vecMovementFactor.magnitude > 0)
         {
-
             _timeMoving += Time.fixedDeltaTime;
 
             Vector3 actualSpeed = Vector3.Scale(vecMovementFactor, speed * speedCurve.Evaluate(_timeMoving / TimeToAchieveFullSpeed));
 
-            Vector3 newPosition = transform.position + (new Vector3(actualSpeed.x,actualSpeed.z,actualSpeed.y) * Time.fixedDeltaTime);
+            Vector3 newPosition = transform.position + (new Vector3(actualSpeed.x, actualSpeed.z, actualSpeed.y) * Time.fixedDeltaTime);
 
             transform.position = newPosition;
 
-            Speed =actualSpeed;
+            Speed = actualSpeed;
         }
         else
         {

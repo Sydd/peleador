@@ -10,4 +10,7 @@ public static class Constants
 
     public static int BASIC_ATTACK_DMG = 10;
     public static int COMBO_ATTACK_DMG = 30;
+
+
+    public static float timeToCheckEnemies;
 }
