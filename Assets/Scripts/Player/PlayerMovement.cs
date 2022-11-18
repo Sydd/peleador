@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // y desde aca solo hay que ejecutar el evento onMoving.
     public Action onPlayerStop;
 
-    public Action<bool> onFlip;
+    public Action<bool> OnFlip { get; set; }
 
     public Vector3 Speed;
 
@@ -89,6 +89,6 @@ public class PlayerMovement : MonoBehaviour
     {
         facingRight = !facingRight;
 
-        onFlip(facingRight);
+        OnFlip(facingRight);
     }
 }

@@ -16,7 +16,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private void Start()
     {
-        movement.onFlip += Flip;
+        movement.OnFlip += Flip;
         
         attackbehavior.OnAttack += HandleAttack;
 
@@ -45,8 +45,9 @@ public class PlayerAnimationHandler : MonoBehaviour
 
 
 
-    private void HandleAttack(AttackType attack) {
-
+    private void HandleAttack(AttackType attack) 
+    {
+        if (attack == AttackType.ATTACK_END) return;    
         animator.SetTrigger(attack.ToString());
     }
 

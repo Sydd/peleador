@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ public class Player : MonoBehaviour
     private PlayerAttack _attackBehavior;
 
     private PlayerStatus currentStatus;
-    private int lastLean = -1;
 
     public PlayerStatus CurrentStatus { get => currentStatus; }
 
@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
     {
         ChangeStatus(PlayerStatus.WALKING);
         _attackBehavior.OnAttack += ChangeStatusAttack;
+        _movementBehavior.OnFlip += OnFlip;
+    }
+
+    private void OnFlip(bool flip)
+    {
+        _attackBehavior.Flip(flip);
     }
 
     public void ChangeStatus(PlayerStatus a)

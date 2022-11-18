@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public int HP { get => hp; set => hp = value; }
 
     [SerializeField]
-    private EnemyAnimationHandler animationHandler;
+    private EnemyAnimationHandler _animationHandler;
 
     [SerializeField]
     private Player player;
@@ -25,9 +25,10 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = Object.FindObjectOfType<Player>();
+        _animationHandler = GetComponentInChildren<EnemyAnimationHandler>();
     }
 
-    private async void Update()
+    private void Update()
     {
         elapsedTime += Time.deltaTime;
 
@@ -57,7 +58,7 @@ public class Enemy : MonoBehaviour
     {
         ChangeStatus(EnemyStatus.ATTACKING);
 
-        animationHandler.Attack();
+        _animationHandler.Attack();
 
         await UniTask.WaitUntil(() => elapsedTime > 1f);
 
@@ -73,7 +74,7 @@ public class Enemy : MonoBehaviour
     {
         if (attack == AttackType.ATTACK_BASIC)
         {
-            animationHandler.Hurt();
+            _animationHandler.Hurt();
         }
     }
 }

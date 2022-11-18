@@ -1,4 +1,5 @@
-﻿using Spine;
+﻿using Cysharp.Threading.Tasks;
+using Spine;
 using Spine.Unity;
 using System;
 using System.Collections;
@@ -13,6 +14,7 @@ public class EnemyAnimationHandler : MonoBehaviour
     private void Start()
     {
         Idle();
+        _skeleton = GetComponentInChildren<SkeletonAnimation>();
         _skeleton.AnimationState.Complete += AnimationCompleteHandler;
     }
 
@@ -43,9 +45,15 @@ public class EnemyAnimationHandler : MonoBehaviour
         SetAnimation(0, "shoot", false);
     }
 
-    internal void Hurt()
+    internal void Dead()
     {
-        SetAnimation(0, "shoot", false);
+        SetAnimation(0, "dead", false);
+    }
+    internal async void Hurt()
+    {
+        Dead();
+        await UniTask.Delay(100);
+        Idle();
     }
 }
 

@@ -1,0 +1,146 @@
+
+enemy3.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antebrazo
+  rotate: true
+  xy: 420, 385
+  size: 50, 55
+  orig: 52, 57
+  offset: 1, 1
+  index: -1
+bota_adelante
+  rotate: false
+  xy: 124, 398
+  size: 49, 34
+  orig: 49, 34
+  offset: 0, 0
+  index: -1
+bota_atras
+  rotate: true
+  xy: 477, 363
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+brazo_adelante
+  rotate: false
+  xy: 420, 480
+  size: 60, 30
+  orig: 62, 32
+  offset: 1, 1
+  index: -1
+brazo_atras
+  rotate: false
+  xy: 124, 358
+  size: 47, 38
+  orig: 49, 40
+  offset: 1, 1
+  index: -1
+cabeza
+  rotate: true
+  xy: 299, 411
+  size: 99, 119
+  orig: 99, 119
+  offset: 0, 0
+  index: -1
+hombro_atras
+  rotate: true
+  xy: 175, 367
+  size: 34, 54
+  orig: 36, 56
+  offset: 1, 1
+  index: -1
+mano
+  rotate: false
+  xy: 227, 329
+  size: 37, 29
+  orig: 39, 31
+  offset: 1, 1
+  index: -1
+mano_2
+  rotate: true
+  xy: 478, 412
+  size: 43, 32
+  orig: 45, 34
+  offset: 1, 1
+  index: -1
+mano_atras
+  rotate: false
+  xy: 482, 493
+  size: 27, 17
+  orig: 29, 19
+  offset: 1, 1
+  index: -1
+mano_atras_2
+  rotate: false
+  xy: 474, 327
+  size: 36, 34
+  orig: 38, 36
+  offset: 1, 1
+  index: -1
+motosierra
+  rotate: false
+  xy: 2, 434
+  size: 171, 76
+  orig: 173, 78
+  offset: 1, 1
+  index: -1
+motosierra_cadena1
+  rotate: false
+  xy: 299, 358
+  size: 117, 51
+  orig: 119, 53
+  offset: 1, 1
+  index: -1
+motosierra_cadena2
+  rotate: false
+  xy: 2, 380
+  size: 120, 52
+  orig: 122, 54
+  offset: 1, 1
+  index: -1
+muslo
+  rotate: false
+  xy: 420, 437
+  size: 56, 41
+  orig: 58, 43
+  offset: 1, 1
+  index: -1
+muslo_atras
+  rotate: false
+  xy: 231, 360
+  size: 53, 41
+  orig: 55, 43
+  offset: 1, 1
+  index: -1
+palma_atras
+  rotate: true
+  xy: 482, 457
+  size: 34, 19
+  orig: 36, 21
+  offset: 1, 1
+  index: -1
+pierna
+  rotate: false
+  xy: 173, 314
+  size: 52, 51
+  orig: 54, 53
+  offset: 1, 1
+  index: -1
+pierna_atras
+  rotate: true
+  xy: 418, 341
+  size: 42, 54
+  orig: 44, 56
+  offset: 1, 1
+  index: -1
+torso
+  rotate: false
+  xy: 175, 403
+  size: 122, 107
+  orig: 124, 109
+  offset: 1, 1
+  index: -1

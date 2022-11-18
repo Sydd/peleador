@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
     public Action<AttackType> OnAttack;
 
     private bool attacking = false;
-    private int opAttackLeanID;
     private int attackCounter;
     private float _elapsedTime;
 
@@ -37,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
         BasicAttack();
 
-        int result = await UniTask.WhenAny(UniTask.Delay(500), UniTask.WaitUntil(() => Input.GetMouseButtonDown(0)));
+        int result = await UniTask.WhenAny(UniTask.Delay(500), UniTask.WaitUntil(() => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)));
 
         if (result == 0)
         {
@@ -62,7 +61,10 @@ public class PlayerAttack : MonoBehaviour
 
     private async void BasicAttack()
     {
+        await UniTask.WaitUntil(() => _elapsedTime > .25f);
+
         var enemiesTouched = Physics.OverlapSphere(transform.position + meleePositionOffSet, basicAttackRadius, whatIsEnemy);
+
 
         for (int i = 0; i < enemiesTouched.Length; i++)
         {
@@ -85,12 +87,17 @@ public class PlayerAttack : MonoBehaviour
 
         OnAttack?.Invoke(AttackType.ATTACK_COMBO);
     }
+    public void Flip(bool right)
+    {
+        if (right) meleePositionOffSet.x = 1;
+        else meleePositionOffSet.x = -1;
+    }
 
     private void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + meleePositionOffSet, basicAttackRadius);
+        Gizmos.DrawSphere(transform.position + meleePositionOffSet, basicAttackRadius);
     }
 }
 
